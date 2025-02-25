@@ -22,3 +22,14 @@ jobs:
           git add .
           git commit -m "Automated commit: $(date)"
           git push
+
+jobs:
+  notify_telegram:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Telegram Notification
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+          -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} \
+          -d text="✅ GitHub Auto Commit Completed: $(date)"
+
