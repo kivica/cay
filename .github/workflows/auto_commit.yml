@@ -17,6 +17,7 @@ jobs:
 
       - name: Auto commit and push
         run: |
+          echo "$(date)" > last_commit.txt  # 매 실행마다 변경되는 파일 생성
           git add .
           git commit -m "Automated commit: $(date)" || echo "No changes to commit"
           git push || echo "No changes to push"
