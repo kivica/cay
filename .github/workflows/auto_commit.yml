@@ -21,12 +21,13 @@ jobs:
           git clean -fd
           git pull --rebase origin main || true
 
-      - name: Create or update log file to trigger commit
+      - name: Force file update to trigger commit
         run: |
           echo "Last commit: $(date)" > .github/last_commit.log
           git add .github/last_commit.log
 
       - name: Auto commit and push
         run: |
-          git commit -m "Automated commit: $(date)" || true
+          git commit --allow-empty -m "Automated commit: $(date)" || true
           git push origin main || true
+          exit 0
