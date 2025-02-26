@@ -1,5 +1,4 @@
 name: Auto Commit
-
 on:
   schedule:
     - cron: '0 14 * * *' # 한국 시간(KST) 오후 11시 실행 (UTC 14시)
@@ -9,22 +8,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-
         uses: actions/checkout@v3
 
       - name: Set up Git
         run: |
           git config --global user.name "kivica"
-          git config --global user.email "your-email@example.com"
+          git config --global user.email "kivicls@gmail.com"
 
       - name: Auto commit and push
         run: |
           git add .
-          git commit -m "Automated commit: $(date)"
-          git push
-
-      - name: Send Telegram Notification
-        run: |
-          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
-          -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} \
-          -d text="✅ GitHub Auto Commit Completed: $(date)"
+          git commit -m "Automated commit: $(date)" || echo "No changes to commit"
+          git push || echo "No changes to push"
