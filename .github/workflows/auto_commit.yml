@@ -17,10 +17,11 @@ jobs:
 
       - name: Force file update to create changes
         run: |
-          echo "Last commit: $(date)" > .github/last_commit.log  # 변경 사항 강제 생성
+          echo "Last commit: $(date)" > .github/last_commit.log
           git add .github/last_commit.log
 
       - name: Auto commit and push
         run: |
           git commit -m "Automated commit: $(date)" || echo "No changes to commit"
           git push || echo "No changes to push"
+          exit 0  # <== 변경 사항이 없어도 성공으로 처리
