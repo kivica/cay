@@ -1,7 +1,7 @@
 name: Auto Commit
 on:
   schedule:
-    - cron: '0 14 * * *' # 한국 시간(KST) 오후 11시 실행 (UTC 14시)
+    - cron: '0 14 * * *' # UTC 14:00 (Every day at 14:00 UTC)
 
 jobs:
   commit:
@@ -21,13 +21,12 @@ jobs:
           git clean -fd
           git pull --rebase origin main || true
 
-      - name: Force file update to trigger commit
+      - name: Modify an existing file to trigger commit
         run: |
-          echo "Last commit: $(date)" > .github/last_commit.log
-          git add .github/last_commit.log
+          echo "Last commit update: $(date)" >> commit_log.txt
+          git add commit_log.txt
 
       - name: Auto commit and push
         run: |
-          git commit --allow-empty -m "Automated commit: $(date)" || true
-          git push origin main || true
-          exit 0
+          git commit -m "Automated commit: $(date)" || echo "No changes to commit"
+          git push origin main || echo "
