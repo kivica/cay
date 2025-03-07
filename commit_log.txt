@@ -20,3 +20,4 @@ Implemented new feature.
 Auto commit at 2025-03-06  2:15:14.12 
 Auto commit at 2025-03-07  3:13:10.31 
 Auto commit at 2025-03-08  1:42:13.89 
+Modified logic for better readability. 
