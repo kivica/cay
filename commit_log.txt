@@ -26,3 +26,4 @@ Implemented new feature.
 Auto commit at 2025-03-09 23:00:02.36 
 Fixed minor bug in the application. 
 Auto commit at 2025-03-11  8:53:23.40 
+Enhanced UI responsiveness. 
