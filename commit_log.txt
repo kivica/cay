@@ -42,3 +42,4 @@ Updated dependency versions.
 Auto commit at 2025-03-18  0:57:48.94 
 Updated configuration settings. 
 Auto commit at 2025-03-19  1:31:50.80 
+Modified logic for better readability. 
